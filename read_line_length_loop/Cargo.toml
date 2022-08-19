@@ -1,5 +1,5 @@
 [package]
-name = "read_line_length"
+name = "read_line_length_loop"
 version = "0.1.0"
 edition = "2021"
 
