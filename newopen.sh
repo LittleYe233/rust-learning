@@ -76,17 +76,17 @@ post_flags() {
 # main function
 # see: https://stackoverflow.com/a/13350100/12002560
 main() {
-    pre_flags
-    handle_envs
-    handle_paths
-    pre_stuff
-    init_cargo
-    post_init_cargo
-    open_code
-    post_stuff
-    post_flags
+    pre_flags       "$@"
+    handle_envs     "$@"
+    handle_paths    "$@"
+    pre_stuff       "$@"
+    init_cargo      "$@"
+    post_init_cargo "$@"
+    open_code       "$@"
+    post_stuff      "$@"
+    post_flags      "$@"
 }
 
 if [ "$1" != "--source-only" ]; then
-    main "${@}"
+    main "$@"
 fi
