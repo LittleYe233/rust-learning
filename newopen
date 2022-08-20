@@ -51,11 +51,41 @@ post_init_cargo() {
 
     ## create "VS Code-related" configurations
     ### `*.code-workspace`
-    echo -e "{\n\t\"folders\": [\n\t\t{\n\t\t\t\"path\": \".\"\n\t\t}\n\t],\n\t\"settings\": {\n\t}\n}" > "$codeworkspacefile"
+    cat <<EOF > "$codeworkspacefile"
+{
+        "folders": [
+                {
+                        "path": "."
+                }
+        ],
+        "settings": {
+        }
+}
+EOF
 
     ### `.vscode/extensions.json`
     mkdir -p .vscode
-    echo -e "{\n    \"recommendations\": [\n        \"rust-lang.rust-analyzer\",\n        \"serayuzgur.crates\",\n        \"dustypomerleau.rust-syntax\",\n        \"VisualStudioExptTeam.vscodeintellicode\"\n    ]\n}" > .vscode/extensions.json
+    cat <<EOF > .vscode/extensions.json
+{
+    "recommendations": [
+        "rust-lang.rust-analyzer",
+        "serayuzgur.crates",
+        "dustypomerleau.rust-syntax",
+        "VisualStudioExptTeam.vscodeintellicode"
+    ]
+}
+EOF
+
+    ## create useful utilites
+    cat <<EOF > autogit
+#!/bin/sh
+
+cd $(dirname "$0")
+
+git add .
+git commit -m "chore($(basename $(realpath .))): update at $(date +"%Y-%m-%dT%H:%M:%SZ%:z")"
+EOF
+    chmod +x ./autogit
 }
 
 # open VS Code
