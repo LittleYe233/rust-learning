@@ -83,7 +83,7 @@ EOF
 cd $(dirname "$0")
 
 git add .
-git commit -m "chore($(basename $(realpath .))): update at $(date +"%Y-%m-%dT%H:%M:%SZ%:z")"
+git commit -m "chore(\$(basename \$(realpath .))): update at \$(date +"%Y-%m-%dT%H:%M:%SZ%:z")"
 EOF
     chmod +x ./autogit
 }
