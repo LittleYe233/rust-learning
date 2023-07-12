@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd .
+
+git add .
+git commit -m "chore($(basename $(realpath .))): update at $(date +"%Y-%m-%dT%H:%M:%SZ%:z")"
